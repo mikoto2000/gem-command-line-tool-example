@@ -18,16 +18,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-        bundler-cache: true
-    - name: Download dependencies 
-      run: bundle install
     - name: Run test
-      run: bundle exec rake test
-      continue-on-error: true
+      uses: dagger/dagger-for-github@v2
+      with:
+        version: 0.2
+        cmds: |
+          project update
+          do test
     - name: Deploy test result
       uses: peaceiris/actions-gh-pages@v3
       if: ${{ github.ref == 'refs/heads/main' }}
