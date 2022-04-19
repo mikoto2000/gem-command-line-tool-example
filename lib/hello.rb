@@ -4,5 +4,12 @@ require_relative "hello/version"
 
 module Hello
   class Error < StandardError; end
-  # Your code goes here...
+
+  def hello
+    "Hello, World!"
+  end
+
+  module_function :hello
+
+  puts Hello.hello
 end

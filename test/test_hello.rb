@@ -7,7 +7,7 @@ class TestHello < Minitest::Test
     refute_nil ::Hello::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_hello
+    assert "Hello, World!" == Hello.hello
   end
 end
